@@ -209,6 +209,12 @@
       object-fit: cover;
       object-position: center;
     }
+    .video-crop2 {
+      width: 80%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      object-position: center;
+    }
     .section-box {
       background-color: #f5f5f5;
       padding: 30px;
@@ -393,7 +399,6 @@
 </section>
 
 
-
 <section class="section">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
@@ -413,7 +418,13 @@
         </div>
       </div>
     </div>
+  </div>
+</section>
 
+
+
+<section class="section">
+  <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-full">
         <h2 class="title is-3">Method</h2>
@@ -423,8 +434,29 @@
       </p>
       </div>
     </div>
+  </div>
+</section>
 
 
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full">
+        <h2 class="title is-3">Step-by-step Fine-grained Safety Prediction Process</h2>
+        <video autoplay controls muted loop playsinline class="video-crop2">
+          <source src="./static/figure/Method_Animation.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Main Result</h2>
@@ -432,13 +464,9 @@
         </div>
       </div>
     </div>
-
-
-
   </div>
-
-
 </section>
+
 
 <section class="section">
 
@@ -458,12 +486,12 @@
       <div class="column is-full">
         <h2 class="title is-3">Safety Reasoning in Open-loop</h2>
         <div style="margin-bottom: 30px;">
+          <p style="text-align: center; margin-top: 15px; font-size: 25px;"><strong>Pair-wise Collision Check</strong></p>
           <img src="./static/figure/Safety_Reasoning_NC.png" alt="Safety Reasoning NC" style="width: 80%; height: auto;">
-          <p style="text-align: center; margin-top: 15px; font-size: 25px;"><strong>No-fault Collision Score</strong></p>
         </div>
         <div>
+          <p style="text-align: center; margin-top: 15px; font-size: 25px;"><strong>Time-wise Drivable Area Compliance Check</strong></p>
           <img src="./static/figure/Safety_Reasoning_DAC.png" alt="Safety Reasoning DAC" style="width: 80%; height: auto;">
-          <p style="text-align: center; margin-top: 15px; font-size: 25px;"><strong>Drivable Area Compliance</strong></p>
         </div>
       </div>
     </div>
