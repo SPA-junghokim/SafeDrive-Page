@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="SafeDrive: Fine-Grained Safety Reasoning for End-to-End Driving in a Sparse World">
+  <meta name="keywords" content="Robotics, Dataset, Computervision">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>SafeDrive: Fine-Grained Safety Reasoning for End-to-End Driving in a Sparse World</title>
+  <link rel="icon" type="image/png" href="./static/figure/ADR_icon.png" sizes="32x32">
+
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-27RR1PT8TK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-27RR1PT8TK');
+  </script>
+
+  <script>
+
+    let modalVisible = false;
+  
+    function openModal(img) {
+      const modal = document.getElementById("myModal");
+      const modalImg = document.getElementById("modalImage");
+  
+      modalImg.src = img.src;
+      modal.style.display = "flex";
+      modalVisible = true;
+
+      modalImg.addEventListener("click", closeModal); // 이미지를 클릭하면 팝업창이 닫히도록 이벤트 추가
+    }
+  
+    function closeModal() {
+      const modal = document.getElementById("myModal");
+      modal.style.display = "none";
+      modalVisible = false;
+
+      modalImg.removeEventListener("click", closeModal); // 팝업창이 닫히면 이미지 클릭 이벤트 제거
+  
+    }
+  
+    function toggleModal(img) {
+      if (modalVisible) {
+        closeModal();
+      } else {
+        openModal(img);
+      }
+    }
+
+    function openModal2(img) {
+      const modal = document.getElementById("myModal2");
+      const modalImg = document.getElementById("modalImage2");
+  
+      modalImg.src = img.src;
+      modal.style.display = "flex";
+      modalVisible = true;
+
+      modalImg.addEventListener("click", closeModal2); // 이미지를 클릭하면 팝업창이 닫히도록 이벤트 추가
+    }
+  
+    function closeModal2() {
+      const modal = document.getElementById("myModal2");
+      modal.style.display = "none";
+      modalVisible = false;
+
+      modalImg.removeEventListener("click", closeModal2); // 팝업창이 닫히면 이미지 클릭 이벤트 제거
+  
+    }
+  
+    function toggleModal2(img) {
+      if (modalVisible) {
+        closeModal2();
+      } else {
+        openModal2(img);
+      }
+    }
+  </script>
+  
+
+  <style>
+    .item-steve {
+      position: relative;
+      max-width: 100%;
+      overflow: hidden;
+    }
+  
+    .item-steve img {
+      width: 100%;
+      height: auto;
+      transition: transform 0.3s ease-in-out;
+      cursor: pointer;
+    }
+  
+    .modal2 {
+      display: none;
+      position: relative;
+      z-index: 9999;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+  
+    .modal2-content {
+      margin: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      zoom: 3;  /* 이미지를 확대 */
+    }
+    
+    .modal {
+      justify-content: center;
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+  
+    .modal-content {
+      /* margin: auto;
+      display: flex;
+      position: relative;
+      justify-content: center;
+      align-items: center;
+      max-width: 90%;  
+      max-height: 90%;  */
+    }
+    
+    .image-button-container {
+      position: relative;
+      display: inline-block;
+    }
+
+    .close2 {
+      position: absolute;
+      top: 16px;
+      right: 16px;  /* 이미지 내부로 이동 */
+      color: #000000;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 9999;
+    }
+
+    .close {
+      position: absolute;
+      top: 120px;
+      right: 565px;  /* 이미지 내부로 이동 */
+      color: #000000;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 9999;
+    }
+
+
+    .logo-container {
+      display: flex;  /* flexbox를 활성화합니다 */
+      align-items: center;  /* 수직 방향으로 중앙에 배치합니다 */
+      justify-content: center;
+      /* gap:  */
+    }
+    
+    /* .logo_hanyang {
+      align-items: flex-start; 
+      height: 80px;  
+      width: auto; 
+    } */
+
+    .logo_sap {
+      height: 200px;  /* 이미지의 높이를 고정합니다 */
+      width: auto;  /* 이미지의 비율에 맞게 너비를 자동으로 조정합니다 */
+      margin-left: 60px;  /* 로고를 오른쪽으로 약간 이동 */
+    }
+    
+    .item-chair-tp {
+      background-color: white;
+    }
+    #teaser {
+      transform: scale(1.2);
+    }
+    .is_blue {
+      background-color: #4285F4; /* 예시로 빨간색으로 설정합니다 */
+      /* 다른 스타일 변경도 가능합니다 */
+    }
+    .is-red{
+      background-color: #ff0000; /* 예시로 빨간색으로 설정합니다 */
+      /* 다른 스타일 변경도 가능합니다 */
+    }
+    .video-crop {
+      width: 100%;
+      aspect-ratio: 16 / 4.35;
+      object-fit: cover;
+      object-position: center;
+    }
+    .section-box {
+      background-color: #f5f5f5;
+      padding: 30px;
+      border-radius: 8px;
+    }
+    section.section {
+      margin-top: 0.5rem !important;
+      margin-bottom: 0.5rem !important;
+    }
+    .columns.is-centered:not(:first-child) {
+      margin-top: 5rem;
+    }
+  </style>
+
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<!-- 집 모양 네비게이션 바(메뉴)를 만드는 코드 -->
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://www.spa.hanyang.ac.kr" target="_blank">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          ADR Laboratory
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://adr.snu.ac.kr" target="_blank">
+            Home
+          </a>
+          <a class="navbar-item" href="https://adr.snu.ac.kr/faculty" target="_blank">
+            Faculty
+          </a>
+          <a class="navbar-item" href="https://adr.snu.ac.kr/members" target="_blank">
+            Members
+          </a>
+          <a class="navbar-item" href="https://adr.snu.ac.kr/research" target="_blank">
+            Research
+          </a>
+<!--           <a class="navbar-item" href="https://www.adr.snu.ac.kr/projects" target="_blank">
+            Projects
+          </a> -->
+          <a class="navbar-item" href="https://adr.snu.ac.kr/publications" target="_blank">
+            Publications
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title" style="font-size: 45px">SafeDrive: Fine-Grained Safety Reasoning for End-to-End Driving in a Sparse World</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block" style="font-size: 20px;">
+              <a href="https://scholar.google.com/citations?user=9wVmZ5kAAAAJ&hl=ko" target="_blank">Jungho Kim</a>, 
+            
+              <a href="mailto:jyoh@adr.snu.ac.kr" target="_blank">Jiyong Oh</a>, 
+            
+              <a href="https://scholar.google.com/citations?user=RJnWLIUAAAAJ&hl=ko&authuser=1&oi=ao" target="_blank">Seunghoon Yu</a>,
+
+              <a href="mailto:hjshin@adr.snu.ac.kr" target="_blank">Hongjae Shin</a>,
+            
+              <a href="mailto:dhkwak@adr.snu.ac.kr" target="_blank">Donghyuk Kwak</a>,
+           
+              <a href="https://scholar.google.com/citations?user=IHH2PyYAAAAJ&hl=ko&oi=ao" target="_blank">Jun Won Choi</a><sup>†</sup>
+          </div>
+          
+          <!-- 여백용 -->
+          <span class="author-block" style="font-size: 0px;"> </span> 
+
+          <div class="is-size-5 publication-authors" >
+            <span class="author-block" style="font-size: 23px;" > Seoul National University </span>
+          </div>
+          
+
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <br><br>
+
+            <div class="logo-container">
+              <div class="column">
+                <a href="https://adr.snu.ac.kr/home" target="_blank">
+                  <img class="logo_sap" src="./static/figure/ADR_logo_v1.png" alt="logo_spa">
+                </a>
+              </div>
+            </div>
+            
+            <!-- <a href="https://youtu.be/9zc-5Gxjvzk"><img src="https://img.shields.io/badge/Demo_Video-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="YouTube Video"/></a> -->
+            <!-- <a href="https://docs.google.com/forms/u/3/d/e/1FAIpQLSfsMQq5Ob2NI1aV96C7NhnMtXvBshJvbuegVeQ5B3KETNv0FQ/viewform?usp=send_form"><img src="https://img.shields.io/badge/Data_set-4285F4?style=for-the-badge&logo=google-drive&logoColor=white" alt="Data set"/></a> -->
+            <a href="https://arxiv.org/abs/2602.18887"><img src="https://img.shields.io/badge/Paper-FF0000?style=for-the-badge&logo=pagekit&logoColor=white" alt="OpenReview"/></a>
+            <a href="https://github.com/SPA-junghokim/SafeDrive"><img src="https://img.shields.io/badge/Github-181717?style=for-the-badge&logo=github&logoColor=white" alt="Github.io"/></a>
+
+
+            <br><br><br>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <div class="has-text-centered">
+        <h2 class="title is-3">Motivation</h2>
+      </div>
+      <img src="./static/figure/Intro.png" alt="Intro teaser image" style="width: 100%; height: auto; display: block;">
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths section-box">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          The end-to-end (E2E) paradigm, which maps sensor inputs directly to driving decisions, has recently attracted significant attention due to its unified modeling capability and scalability. 
+          However, ensuring safety in this unified framework remains one of the most critical challenges.
+          In this work, we propose SafeDrive, an E2E planning framework designed to perform explicit and interpretable safety reasoning through a trajectory-conditioned Sparse World Model. 
+          SafeDrive comprises two complementary networks: the <b><i>Sparse World Network (SWNet)</i></b> and the <b><i>Fine-grained Reasoning Network (FRNet)</i></b>. 
+          <i>SWNet</i> constructs trajectory-conditioned sparse worlds that simulate the future behaviors of critical dynamic agents and road entities, providing interaction-centric representations for downstream reasoning. 
+          <i>FRNet</i> then evaluates agent-specific collision risks and temporal adherence to drivable regions, enabling precise identification of safety-critical events across future timesteps. 
+          SafeDrive achieves state-of-the-art performance on both open-loop and closed-loop benchmarks. 
+          On NAVSIM, it records a PDMS of 91.6 and an EPDMS of 87.5, with only 61 collisions out of 12,146 scenarios (0.5%). 
+          On Bench2Drive, SafeDrive attains a 66.8% driving score.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full">
+        <h2 class="title is-3">Method</h2>
+      <img src="./static/figure/Method.png" alt="Main Result teaser image" style="width: 100%; height: auto;">
+      <p class="has-text-justified">
+        <strong>Overall architecture of SafeDrive.</strong> ProposalNet evaluates the scene-level safety of anchor trajectories using BEV features and selects safety-aware candidates. SWNet constructs trajectory-conditioned Sparse Worlds by simulating the future behaviors of dynamic agents and road entities. FRNet performs fine-grained safety reasoning by estimating pair-wise No at-fault Collision score and evaluating Time-wise Drivable Area Compliance score over time, enabling interpretable and temporally grounded safety assessment.
+      </p>
+      </div>
+    </div>
+
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Main Result</h2>
+      <img src="./static/figure/Main_Result_NAVSIM.png" alt="Main Result teaser image">
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+
+
+</section>
+
+<section class="section">
+
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full">
+        <h2 class="title is-3">Comparison with State-of-the-Art</h2>
+      <img src="./static/figure/Compare_w_SOTA.png" alt="Main Result teaser image" style="width: 100%; height: auto;">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full">
+        <h2 class="title is-3">Safety Reasoning in Open-loop</h2>
+        <div style="margin-bottom: 30px;">
+          <img src="./static/figure/Safety_Reasoning_NC.png" alt="Safety Reasoning NC" style="width: 80%; height: auto;">
+          <p style="text-align: center; margin-top: 15px; font-size: 25px;"><strong>No-fault Collision Score</strong></p>
+        </div>
+        <div>
+          <img src="./static/figure/Safety_Reasoning_DAC.png" alt="Safety Reasoning DAC" style="width: 80%; height: auto;">
+          <p style="text-align: center; margin-top: 15px; font-size: 25px;"><strong>Drivable Area Compliance</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full">
+        <h2 class="title is-3">Safety Reasoning in Closed-loop</h2>
+        <video autoplay controls muted loop playsinline class="video-crop">
+          <source src="./static/figure/b2d_safety_reasoning.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+    
+
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@inproceedings{safedrive,
+  title={SafeDrive: Fine-Grained Safety Reasoning for End-to-End Driving in a Sparse World},
+  author={Kim, Jungho and Oh, Jiyong and Yu, Seunghoon and Shin, Hongjae and Kwak, Donghyuk and Choi, Jun Won},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  year={2026}
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p> This webpage template is from 
+            <a rel="Nerfies" href="https://github.com/nerfies/nerfies.github.io" target="_blank"> Nerfies</a>.
+            We sincerely thank 
+            <a rel="Keunhong_Park" href="https://keunhong.com" target="_blank"> Keunhong Park </a>
+            for developing and open-sourcing this template.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
