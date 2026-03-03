@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>SafeDrive: Fine-Grained Safety Reasoning for End-to-End Driving in a Sparse World</title>
-  <link rel="icon" type="image/png" href="./static/figure/ADR_icon.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="./static/figure/favicon.png" sizes="32x32">
 
 
   <!-- Google tag (gtag.js) -->
@@ -172,6 +172,8 @@
       display: flex;  /* flexbox를 활성화합니다 */
       align-items: center;  /* 수직 방향으로 중앙에 배치합니다 */
       justify-content: center;
+      margin-top: -10px;
+      margin-bottom: -30px;
       /* gap:  */
     }
     
@@ -181,7 +183,7 @@
       width: auto; 
     } */
 
-    .logo_sap {
+    .logo_adr {
       height: 200px;  /* 이미지의 높이를 고정합니다 */
       width: auto;  /* 이미지의 비율에 맞게 너비를 자동으로 조정합니다 */
       margin-left: 60px;  /* 로고를 오른쪽으로 약간 이동 */
@@ -213,8 +215,8 @@
       border-radius: 8px;
     }
     section.section {
-      margin-top: 0.5rem !important;
-      margin-bottom: 0.5rem !important;
+      margin-top: 0.0rem !important;
+      margin-bottom: 0.0rem !important;
     }
     .columns.is-centered:not(:first-child) {
       margin-top: 5rem;
@@ -243,7 +245,7 @@
 <body>
 
 <!-- 집 모양 네비게이션 바(메뉴)를 만드는 코드 -->
-<nav class="navbar" role="navigation" aria-label="main navigation">
+<!-- <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
       <span aria-hidden="true"></span>
@@ -253,7 +255,7 @@
   </div>
   <div class="navbar-menu">
     <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
-      <a class="navbar-item" href="https://www.spa.hanyang.ac.kr" target="_blank">
+      <a class="navbar-item" href="https://www.adr.snu.ac.kr" target="_blank">
       <span class="icon">
           <i class="fas fa-home"></i>
       </span>
@@ -276,9 +278,6 @@
           <a class="navbar-item" href="https://adr.snu.ac.kr/research" target="_blank">
             Research
           </a>
-<!--           <a class="navbar-item" href="https://www.adr.snu.ac.kr/projects" target="_blank">
-            Projects
-          </a> -->
           <a class="navbar-item" href="https://adr.snu.ac.kr/publications" target="_blank">
             Publications
           </a>
@@ -286,7 +285,7 @@
       </div>
     </div>
   </div>
-</nav>
+</nav> -->
 
 
 <section class="hero">
@@ -294,50 +293,86 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title" style="font-size: 45px">SafeDrive: Fine-Grained Safety Reasoning for End-to-End Driving in a Sparse World</h1>
-          <div class="is-size-5 publication-authors">
+          <h1 class="title is-1 publication-title" style="font-size: 45px; margin-bottom: 1.0rem;">SafeDrive: Fine-Grained Safety Reasoning for End-to-End Driving in a Sparse World</h1>
+          <div class="is-size-5 publication-authors" style="margin-top: -6px;">
             <span class="author-block" style="font-size: 20px;">
               <a href="https://scholar.google.com/citations?user=9wVmZ5kAAAAJ&hl=ko" target="_blank">Jungho Kim</a>, 
-            
               <a href="mailto:jyoh@adr.snu.ac.kr" target="_blank">Jiyong Oh</a>, 
-            
               <a href="https://scholar.google.com/citations?user=RJnWLIUAAAAJ&hl=ko&authuser=1&oi=ao" target="_blank">Seunghoon Yu</a>,
-
               <a href="mailto:hjshin@adr.snu.ac.kr" target="_blank">Hongjae Shin</a>,
-            
               <a href="mailto:dhkwak@adr.snu.ac.kr" target="_blank">Donghyuk Kwak</a>,
-           
               <a href="https://scholar.google.com/citations?user=IHH2PyYAAAAJ&hl=ko&oi=ao" target="_blank">Jun Won Choi</a><sup>†</sup>
           </div>
           
           <!-- 여백용 -->
           <span class="author-block" style="font-size: 0px;"> </span> 
 
-          <div class="is-size-5 publication-authors" >
+          <div class="is-size-5 publication-authors" style="margin-top: -28px; margin-bottom: 5px;">
             <span class="author-block" style="font-size: 23px;" > Seoul National University </span>
           </div>
           
 
+          <div class="is-size-5 publication-authors" >
+            <span class="author-block" style="font-size: 30px;" > <b>CVPR 2026</b> </span>
+          </div>
+          
 
           <div class="column has-text-centered">
-            <div class="publication-links">
-              <br><br>
+            <div class="publication-links" style="margin-top: 20px; margin-bottom: -30px;">
 
             <div class="logo-container">
               <div class="column">
                 <a href="https://adr.snu.ac.kr/home" target="_blank">
-                  <img class="logo_sap" src="./static/figure/ADR_logo_v1.png" alt="logo_spa">
+                  <img class="logo_adr" src="./static/figure/ADR_logo_v1.png" alt="logo_adr">
                 </a>
               </div>
             </div>
             
             <!-- <a href="https://youtu.be/9zc-5Gxjvzk"><img src="https://img.shields.io/badge/Demo_Video-FF0000?style=for-the-badge&logo=youtube&logoColor=white" alt="YouTube Video"/></a> -->
             <!-- <a href="https://docs.google.com/forms/u/3/d/e/1FAIpQLSfsMQq5Ob2NI1aV96C7NhnMtXvBshJvbuegVeQ5B3KETNv0FQ/viewform?usp=send_form"><img src="https://img.shields.io/badge/Data_set-4285F4?style=for-the-badge&logo=google-drive&logoColor=white" alt="Data set"/></a> -->
-            <a href="https://arxiv.org/abs/2602.18887"><img src="https://img.shields.io/badge/Paper-FF0000?style=for-the-badge&logo=pagekit&logoColor=white" alt="OpenReview"/></a>
-            <a href="https://github.com/SPA-junghokim/SafeDrive"><img src="https://img.shields.io/badge/Github-181717?style=for-the-badge&logo=github&logoColor=white" alt="Github.io"/></a>
+            <!-- <a href="https://arxiv.org/abs/2602.18887"><img src="https://img.shields.io/badge/Paper-FF0000?style=for-the-badge&logo=pagekit&logoColor=white" alt="OpenReview"/></a> -->
+            <!-- <a href="https://github.com/SPA-junghokim/SafeDrive"><img src="https://img.shields.io/badge/Github-181717?style=for-the-badge&logo=github&logoColor=white" alt="Github.io"/></a> -->
 
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2602.18887" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+                <!-- Code Link. -->
+                <span class="link-block">
+                  <a href="https://github.com/SPA-junghokim/SafeDrive"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+                <!-- Demo Link -->
+                <!-- <span class="link-block">
+                  <a href="https://huggingface.co/spaces/facebook/vggt"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span>🤗 Demo</span>
+                  </a>
+                </span> -->
+                <!-- Slides Link -->
+                <!-- <span class="link-block">
+                  <a href="https://docs.google.com/presentation/d/1JVuPnuZx6RgAy-U5Ezobg73XpBi7FrOh/edit?usp=sharing&ouid=107115712143490405606&rtpof=true&sd=true"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-presentation"></i>
+                    </span>
+                    <span>Slides</span>
+                  </a>
+                </span> -->
+              </div>
 
-            <br><br><br>
           </div>
         </div>
       </div>
